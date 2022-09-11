@@ -1,0 +1,77 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Dashboard | KudiStar</title>
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/d75c367c66.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="float-side-bar">
+            <i class="fa-solid fa-xmark"></i>
+            <ul>
+                <li><a href="">Dashboard</a></li>
+                <li><a href="">Income History</a></li>
+                <li><a href="">Profile</a></li>
+                <li><a href="">Resources</a></li>
+                <li><a href="">Request</a></li>
+                <li><a href="">Logout</a></li>
+
+            </ul>
+        </nav>
+        <div class="dashboard">
+            <h1>Income History</h1>
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div>
+
+        </div>
+
+    </div>
+</body>
+<script>
+    const link = document.querySelectorAll(".main-link")
+
+    link.forEach(element => {
+        const actionLink = element.querySelector("#link-copy")
+
+        actionLink.addEventListener('click', () => {
+            const el = element.querySelector('#org-link');
+            const textLink = element.querySelector('#link-copy');
+
+            el.select();
+            navigator.clipboard.writeText(el.value);
+            animateLink(textLink.textContent, textLink)
+        })
+
+    });
+
+    function animateLink(previousWord, node) {
+        node.textContent = "Link Copied!";
+        node.classList.add("anim");
+        setTimeout(() => {
+            node.textContent = previousWord;
+            node.classList.remove("anim");
+        }, 1000);
+    }
+
+    //side bar
+    const bar = document.querySelector(".fa-bars")
+    const close = document.querySelector(".fa-xmark")
+
+    const sideBar = document.querySelector(".float-side-bar")
+    bar.addEventListener('click', () => {
+        sideBar.classList.add("show-side-bar")
+    })
+
+    close.addEventListener('click', () => {
+        sideBar.classList.remove("show-side-bar")
+    })
+</script>
+
+</html>
